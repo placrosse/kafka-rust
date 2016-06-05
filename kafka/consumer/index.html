@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `consumer` mod in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, consumer">
+
+    <title>kafka::consumer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a></p><script>window.sidebarCurrent = {name: 'consumer', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>kafka</a>::<wbr><a class='mod' href=''>consumer</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1116' class='srclink' href='../../src/kafka/src/consumer.rs.html#1-792' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Kafka Consumer - A higher-level API for consuming a kafka topic.</p>
+
+<p>A consumer for a single Kafka topic on behalf of a specified group
+providing help in offset management.  The consumer can be
+optionally advised to consume only particular partitions of the
+underlying topic.</p>
+
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>use</span> <span class='ident'>kafka</span>::<span class='ident'>consumer</span>::{<span class='ident'>Consumer</span>, <span class='ident'>FetchOffset</span>};
+
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>consumer</span> <span class='op'>=</span>
+   <span class='ident'>Consumer</span>::<span class='ident'>from_hosts</span>(<span class='macro'>vec</span><span class='macro'>!</span>(<span class='string'>&quot;localhost:9092&quot;</span>.<span class='ident'>to_owned</span>()),
+                             <span class='string'>&quot;my-group&quot;</span>.<span class='ident'>to_owned</span>(),
+                             <span class='string'>&quot;my-topic&quot;</span>.<span class='ident'>to_owned</span>())
+      .<span class='ident'>with_partitions</span>(<span class='kw-2'>&amp;</span>[<span class='number'>0</span>, <span class='number'>1</span>])
+      .<span class='ident'>with_fallback_offset</span>(<span class='ident'>FetchOffset</span>::<span class='ident'>Earliest</span>)
+      .<span class='ident'>create</span>()
+      .<span class='ident'>unwrap</span>();
+<span class='kw'>loop</span> {
+  <span class='kw'>for</span> <span class='ident'>ms</span> <span class='kw'>in</span> <span class='ident'>consumer</span>.<span class='ident'>poll</span>().<span class='ident'>unwrap</span>().<span class='ident'>iter</span>() {
+    <span class='kw'>for</span> <span class='ident'>m</span> <span class='kw'>in</span> <span class='ident'>ms</span>.<span class='ident'>messages</span>() {
+      <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>m</span>);
+    }
+    <span class='ident'>consumer</span>.<span class='ident'>consume_messageset</span>(<span class='ident'>ms</span>);
+  }
+  <span class='ident'>consumer</span>.<span class='ident'>commit_consumed</span>();
+}</pre>
+
+<p>A <code>.poll()</code> will ask for the next available &quot;chunk of data&quot; for
+client code to process.  The returned data are <code>MessageSet</code>s - at
+most one for each partition of the consumed topic.</p>
+
+<p>The consumer helps in keeping track of already consumed messages
+by maintaining a map of the consumed offsets.  Messages can be
+told &quot;consumed&quot; either through <code>consume_message</code> or
+<code>consume_messages</code> methods.  Once these consumed messages are
+committed to Kafka using <code>commit_consumed</code>, the consumer will
+start fetching messages from here after restart. Since committing
+is a certain overhead, it is up to the client to decide the
+frequency of the commits.  The consumer will <em>not</em> commit any
+messages to Kafka automatically.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use client::<a class='enum' href='../../kafka/client/enum.FetchOffset.html' title='kafka::client::FetchOffset'>FetchOffset</a>;</code></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Builder.html'
+                                  title='kafka::consumer::Builder'>Builder</a></td>
+                           <td class='docblock short'>
+                                <p>A Kafka Consumer builder easing the process of setting up various
+configuration settings.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Consumer.html'
+                                  title='kafka::consumer::Consumer'>Consumer</a></td>
+                           <td class='docblock short'>
+                                <p>The Kafka Consumer</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Message.html'
+                                  title='kafka::consumer::Message'>Message</a></td>
+                           <td class='docblock short'>
+                                <p>A fetched message from a remote Kafka broker for a particular
+topic partition.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.MessageSet.html'
+                                  title='kafka::consumer::MessageSet'>MessageSet</a></td>
+                           <td class='docblock short'>
+                                <p>A set of messages succesfully retrieved from a specific topic
+partition.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.MessageSets.html'
+                                  title='kafka::consumer::MessageSets'>MessageSets</a></td>
+                           <td class='docblock short'>
+                                <p>Messages retrieved from kafka in one fetch request.  This is a
+concatenation of blocks of messages successfully retrieved from
+the consumed topic partitions.  Each such partitions is guaranteed
+to be present at most once in this structure.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.MessageSetsIter.html'
+                                  title='kafka::consumer::MessageSetsIter'>MessageSetsIter</a></td>
+                           <td class='docblock short'>
+                                <p>An iterator over the consumed topic partition message sets.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_RETRY_MAX_BYTES_LIMIT.html'
+                                  title='kafka::consumer::DEFAULT_RETRY_MAX_BYTES_LIMIT'>DEFAULT_RETRY_MAX_BYTES_LIMIT</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>Builder::with_retry_max_bytes_limit</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

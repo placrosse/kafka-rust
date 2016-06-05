@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["client","Kafka Client - A mid-level abstraction for a kafka cluster allowing building higher level constructs."],["consumer","Kafka Consumer - A higher-level API for consuming a kafka topic."],["error","Error struct and methods"],["producer","Kafka Producer - A higher-level API for sending messages to Kafka topics."]]});

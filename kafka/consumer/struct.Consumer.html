@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Consumer` struct in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Consumer">
+
+    <title>kafka::consumer::Consumer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a>::<wbr><a href='index.html'>consumer</a></p><script>window.sidebarCurrent = {name: 'Consumer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>kafka</a>::<wbr><a href='index.html'>consumer</a>::<wbr><a class='struct' href=''>Consumer</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1132' class='srclink' href='../../src/kafka/src/consumer.rs.html#75-79' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Consumer {
+    // some fields omitted
+}</pre><div class='docblock'><p>The Kafka Consumer</p>
+
+<p>See module level documentation.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../kafka/consumer/struct.Consumer.html' title='kafka::consumer::Consumer'>Consumer</a></code></h3><div class='impl-items'><h4 id='method.from_client' class='method'><code>fn <a href='#method.from_client' class='fnname'>from_client</a>(client: <a class='struct' href='../../kafka/client/struct.KafkaClient.html' title='kafka::client::KafkaClient'>KafkaClient</a>, group: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, topic: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Starts building a consumer for the given topic on behalf of
+the given group using the given kafka client.</p>
+</div><h4 id='method.from_hosts' class='method'><code>fn <a href='#method.from_hosts' class='fnname'>from_hosts</a>(hosts: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;, group: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, topic: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Starts building a consumer for the given topic on behalf of
+the given group bootstraping internally a new kafka client
+from the given kafka hosts.</p>
+</div><h4 id='method.client' class='method'><code>fn <a href='#method.client' class='fnname'>client</a>(self) -&gt; <a class='struct' href='../../kafka/client/struct.KafkaClient.html' title='kafka::client::KafkaClient'>KafkaClient</a></code></h4>
+<div class='docblock'><p>Destroys this consumer returning back the underlying kafka client.</p>
+</div><h4 id='method.poll' class='method'><code>fn <a href='#method.poll' class='fnname'>poll</a>(&amp;mut self) -&gt; <a class='type' href='../../kafka/error/type.Result.html' title='kafka::error::Result'>Result</a>&lt;<a class='struct' href='../../kafka/consumer/struct.MessageSets.html' title='kafka::consumer::MessageSets'>MessageSets</a>&gt;</code></h4>
+<div class='docblock'><p>Polls for the next available message data.</p>
+</div><h4 id='method.single_partition_consumer' class='method'><code>fn <a href='#method.single_partition_consumer' class='fnname'>single_partition_consumer</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Determines whether this consumer is set up to consume only a
+single partition.</p>
+</div><h4 id='method.last_consumed_message' class='method'><code>fn <a href='#method.last_consumed_message' class='fnname'>last_consumed_message</a>(&amp;self, partition: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt;</code></h4>
+<div class='docblock'><p>Retrieves the offset of the last &quot;consumed&quot; message in the
+specified partition. Results in <code>None</code> if there is no such
+&quot;consumed&quot; message for this consumer&#39;s group in the underlying
+topic.</p>
+</div><h4 id='method.consume_message' class='method'><code>fn <a href='#method.consume_message' class='fnname'>consume_message</a>(&amp;mut self, partition: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, offset: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>)</code></h4>
+<div class='docblock'><p>Marks the message at the specified offset in the specified
+partition as consumed by the caller.</p>
+
+<p>Note: a message with a &quot;later/higher&quot; offset automatically
+marks all preceeding messages as &quot;consumed&quot;, this is messages
+with &quot;earlier/lower&quot; offsets in the same partition.
+Therefore, it is not neccessary to invoke this method for
+every consumed message.</p>
+</div><h4 id='method.consume_messageset' class='method'><code>fn <a href='#method.consume_messageset' class='fnname'>consume_messageset</a>&lt;'a&gt;(&amp;mut self, msgs: <a class='struct' href='../../kafka/consumer/struct.MessageSet.html' title='kafka::consumer::MessageSet'>MessageSet</a>&lt;'a&gt;)</code></h4>
+<div class='docblock'><p>A convience method to mark the given message set consumed as a
+whole by the caller.  This is equivalent to marking the last
+message of the given set as consumed.</p>
+</div><h4 id='method.commit_consumed' class='method'><code>fn <a href='#method.commit_consumed' class='fnname'>commit_consumed</a>(&amp;mut self) -&gt; <a class='type' href='../../kafka/error/type.Result.html' title='kafka::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Persists the so-far &quot;marked as consumed&quot; messages (on behalf
+of this consumer&#39;s group for the underlying topic.)</p>
+
+<p>See also <code>Consumer::consume_message</code> and <code>Consumer::consume_messetset</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

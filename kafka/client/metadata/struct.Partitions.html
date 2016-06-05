@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Partitions` struct in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Partitions">
+
+    <title>kafka::client::metadata::Partitions - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>kafka</a>::<wbr><a href='../index.html'>client</a>::<wbr><a href='index.html'>metadata</a></p><script>window.sidebarCurrent = {name: 'Partitions', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>kafka</a>::<wbr><a href='../index.html'>client</a>::<wbr><a href='index.html'>metadata</a>::<wbr><a class='struct' href=''>Partitions</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-278' class='srclink' href='../../../src/kafka/src/client/metadata.rs.html#160-163' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Partitions&lt;'a&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>Metadata relevant to partitions of a particular topic.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../../../kafka/client/metadata/struct.Partitions.html' title='kafka::client::metadata::Partitions'>Partitions</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.len' class='method'><code>fn <a href='#method.len' class='fnname'>len</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<div class='docblock'><p>Retrieves the number of the topic&#39;s partitions.</p>
+</div><h4 id='method.is_empty' class='method'><code>fn <a href='#method.is_empty' class='fnname'>is_empty</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Tests for <code>.len() &gt; 0</code>.</p>
+</div><h4 id='method.iter' class='method'><code>fn <a href='#method.iter' class='fnname'>iter</a>(&amp;self) -&gt; <a class='struct' href='../../../kafka/client/metadata/struct.PartitionIter.html' title='kafka::client::metadata::PartitionIter'>PartitionIter</a>&lt;'a&gt;</code></h4>
+<div class='docblock'><p>Retrieves an iterator of the partitions of the underlying topic.</p>
+</div><h4 id='method.partition' class='method'><code>fn <a href='#method.partition' class='fnname'>partition</a>(&amp;self, partition_id: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../kafka/client/metadata/struct.Partition.html' title='kafka::client::metadata::Partition'>Partition</a>&lt;'a&gt;&gt;</code></h4>
+<div class='docblock'><p>Finds a specified partition identified by its id.</p>
+</div><h4 id='method.available_ids' class='method'><code>fn <a href='#method.available_ids' class='fnname'>available_ids</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;</code></h4>
+<div class='docblock'><p>Convenience method to retrieve the identifiers of all
+currently &quot;available&quot; partitions.  Such partitions are known
+to have a leader broker and can be sent messages to.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../kafka/client/metadata/struct.Partitions.html' title='kafka::client::metadata::Partitions'>Partitions</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html' title='core::iter::IntoIterator'>IntoIterator</a> for &amp;'a <a class='struct' href='../../../kafka/client/metadata/struct.Partitions.html' title='kafka::client::metadata::Partitions'>Partitions</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='associatedtype.Item' class='type'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#associatedtype.Item' class='type'>Item</a> = <a class='struct' href='../../../kafka/client/metadata/struct.Partition.html' title='kafka::client::metadata::Partition'>Partition</a>&lt;'a&gt;</code></h4>
+<h4 id='associatedtype.IntoIter' class='type'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#associatedtype.IntoIter' class='type'>IntoIter</a> = <a class='struct' href='../../../kafka/client/metadata/struct.PartitionIter.html' title='kafka::client::metadata::PartitionIter'>PartitionIter</a>&lt;'a&gt;</code></h4>
+<h4 id='method.into_iter' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#tymethod.into_iter' class='fnname'>into_iter</a>(self) -&gt; Self::<a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html' title='core::iter::IntoIterator'>IntoIter</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html' title='core::iter::IntoIterator'>IntoIterator</a> for <a class='struct' href='../../../kafka/client/metadata/struct.Partitions.html' title='kafka::client::metadata::Partitions'>Partitions</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='associatedtype.Item-1' class='type'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#associatedtype.Item' class='type'>Item</a> = <a class='struct' href='../../../kafka/client/metadata/struct.Partition.html' title='kafka::client::metadata::Partition'>Partition</a>&lt;'a&gt;</code></h4>
+<h4 id='associatedtype.IntoIter-1' class='type'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#associatedtype.IntoIter' class='type'>IntoIter</a> = <a class='struct' href='../../../kafka/client/metadata/struct.PartitionIter.html' title='kafka::client::metadata::PartitionIter'>PartitionIter</a>&lt;'a&gt;</code></h4>
+<h4 id='method.into_iter-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html#tymethod.into_iter' class='fnname'>into_iter</a>(self) -&gt; Self::<a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.IntoIterator.html' title='core::iter::IntoIterator'>IntoIter</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

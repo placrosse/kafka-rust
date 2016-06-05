@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["consumer",""],["fetch","A representation of fetched messages from Kafka."],["metadata",""],["offset",""],["produce",""]]});

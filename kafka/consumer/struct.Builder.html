@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Builder` struct in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Builder">
+
+    <title>kafka::consumer::Builder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a>::<wbr><a href='index.html'>consumer</a></p><script>window.sidebarCurrent = {name: 'Builder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>kafka</a>::<wbr><a href='index.html'>consumer</a>::<wbr><a class='struct' href=''>Builder</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1443' class='srclink' href='../../src/kafka/src/consumer.rs.html#608-621' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Builder {
+    // some fields omitted
+}</pre><div class='docblock'><p>A Kafka Consumer builder easing the process of setting up various
+configuration settings.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h3><div class='impl-items'><h4 id='method.with_partitions' class='method'><code>fn <a href='#method.with_partitions' class='fnname'>with_partitions</a>(self, partitions: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Explicitely specifies the partitions to consume.</p>
+
+<p>If this function is never called, all available partitions of
+the underlying topic will be consumed assumed.</p>
+</div><h4 id='method.with_security' class='method'><code>fn <a href='#method.with_security' class='fnname'>with_security</a>(self, sec: <a class='struct' href='../../kafka/client/struct.SecurityConfig.html' title='kafka::client::SecurityConfig'>SecurityConfig</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Specifies the security config to use.
+See <code>KafkaClient::new_secure</code> for more info.</p>
+</div><h4 id='method.with_fallback_offset' class='method'><code>fn <a href='#method.with_fallback_offset' class='fnname'>with_fallback_offset</a>(self, fallback_offset_time: <a class='enum' href='../../kafka/client/enum.FetchOffset.html' title='kafka::client::FetchOffset'>FetchOffset</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Specifies the offset to use when none was committed for the
+underlying group yet.</p>
+
+<p>Running the underlying group for the first time against a
+topic results in the question where to start reading from the
+topic, since it might already contain a lot of messages.
+Common strategies are starting at the earliest available
+message (thereby consuming whatever is currently in the topic)
+or at the latest one (thereby staring to consume only newly
+arriving messages.)  The parameter here corresponds to <code>time</code>
+in <code>KafkaClient::fetch_offsets</code>.</p>
+
+<p>Unless this method is called and there is no offset committed
+for the underlying group yet, this consumer will <em>not</em> retrieve
+any messages from the underlying topic.</p>
+</div><h4 id='method.with_fetch_max_wait_time' class='method'><code>fn <a href='#method.with_fetch_max_wait_time' class='fnname'>with_fetch_max_wait_time</a>(self, max_wait_time: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>See <code>KafkaClient::set_fetch_max_wait_time</code></p>
+</div><h4 id='method.with_fetch_min_bytes' class='method'><code>fn <a href='#method.with_fetch_min_bytes' class='fnname'>with_fetch_min_bytes</a>(self, min_bytes: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>See <code>KafkaClient::set_fetch_min_bytes</code></p>
+</div><h4 id='method.with_fetch_max_bytes_per_partition' class='method'><code>fn <a href='#method.with_fetch_max_bytes_per_partition' class='fnname'>with_fetch_max_bytes_per_partition</a>(self, max_bytes_per_partition: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>See <code>KafkaClient::set_fetch_max_bytes_per_partition</code></p>
+</div><h4 id='method.with_fetch_crc_validation' class='method'><code>fn <a href='#method.with_fetch_crc_validation' class='fnname'>with_fetch_crc_validation</a>(self, validate_crc: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>See <code>KafkaClient::set_fetch_crc_validation</code></p>
+</div><h4 id='method.with_retry_max_bytes_limit' class='method'><code>fn <a href='#method.with_retry_max_bytes_limit' class='fnname'>with_retry_max_bytes_limit</a>(self, limit: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h4>
+<div class='docblock'><p>Specifies the upper bound of data bytes to allow fetching from
+a kafka partition when retrying a fetch request due to a too
+big message in the partition.</p>
+
+<p>By default, this consumer will fetch up to
+<code>KafkaClient::fetch_max_bytes_per_partition</code> data from each
+partition.  However, when it discovers that there are messages
+in an underlying partition which could not be delivered, the
+request to that partition might be retried a few times with an
+increased <code>fetch_max_bytes_per_partition</code>.  The value
+specified here defines a limit to this increment.</p>
+
+<p>A value smaller than the
+<code>KafkaClient::fetch_max_bytes_per_partition</code>, e.g. zero, will
+disable the retry feature of this consumer.  The default value
+for this setting is <code>DEFAULT_RETRY_MAX_BYTES_LIMIT</code>.</p>
+
+<p>Note: if the consumed topic partitions are known to host large
+messages it is much more efficient to set
+<code>KafkaClient::fetch_max_bytes_per_partition</code> appropriately
+instead of relying on the limit specified here.  This limit is
+just an upper bound for already additional retry requests.</p>
+</div><h4 id='method.create' class='method'><code>fn <a href='#method.create' class='fnname'>create</a>(self) -&gt; <a class='type' href='../../kafka/error/type.Result.html' title='kafka::error::Result'>Result</a>&lt;<a class='struct' href='../../kafka/consumer/struct.Consumer.html' title='kafka::consumer::Consumer'>Consumer</a>&gt;</code></h4>
+<div class='docblock'><p>Finally creates/builds a new consumer based on the so far
+supplied settings.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../kafka/consumer/struct.Builder.html' title='kafka::consumer::Builder'>Builder</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

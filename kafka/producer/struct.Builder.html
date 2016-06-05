@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Builder` struct in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Builder">
+
+    <title>kafka::producer::Builder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a>::<wbr><a href='index.html'>producer</a></p><script>window.sidebarCurrent = {name: 'Builder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>kafka</a>::<wbr><a href='index.html'>producer</a>::<wbr><a class='struct' href=''>Builder</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1664' class='srclink' href='../../src/kafka/src/producer.rs.html#315-323' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Builder&lt;P = <a class='struct' href='../../kafka/producer/struct.DefaultPartitioner.html' title='kafka::producer::DefaultPartitioner'>DefaultPartitioner</a>&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A Kafka Producer builder easing the process of setting up various
+configuration settings.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../kafka/producer/struct.Builder.html' title='kafka::producer::Builder'>Builder</a></code></h3><div class='impl-items'><h4 id='method.with_security' class='method'><code>fn <a href='#method.with_security' class='fnname'>with_security</a>(self, security: <a class='struct' href='../../kafka/client/struct.SecurityConfig.html' title='kafka::client::SecurityConfig'>SecurityConfig</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Specifies the security config to use.
+See <code>KafkaClient::new_secure</code> for more info.</p>
+</div><h4 id='method.with_compression' class='method'><code>fn <a href='#method.with_compression' class='fnname'>with_compression</a>(self, compression: <a class='enum' href='../../kafka/client/enum.Compression.html' title='kafka::client::Compression'>Compression</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Sets the compression algorithm to use when sending out data.</p>
+
+<p>See <code>KafkaClient::set_compression</code>.</p>
+</div><h4 id='method.with_ack_timeout' class='method'><code>fn <a href='#method.with_ack_timeout' class='fnname'>with_ack_timeout</a>(self, timeout: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Sets the maximum time in milliseconds the kafka brokers can
+await the receipt of required acknowledgements (which is
+specified through <code>Builder::with_required_acks</code>.)  Note that
+Kafka explicitely documents this not to be a hard limit.</p>
+</div><h4 id='method.with_required_acks' class='method'><code>fn <a href='#method.with_required_acks' class='fnname'>with_required_acks</a>(self, required_acks: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i16.html'>i16</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Sets how many acknowledgements the kafka brokers should
+receive before responding to sent messages.  If it is 0 the
+servers will not send any response.  If it is 1, the server
+will wait the data is written to the local server log before
+sending a replying.  If it is -1 the servers will block until
+the messages are committed by all in sync replicas before
+replaying.  For any number <code>&gt; 1</code> the servers will block
+waiting for this number of acknowledgements to occur (but the
+servers will never wait for more acknowledgements than there
+are in-sync replicas).</p>
+</div></div><h3 class='impl'><code>impl&lt;P&gt; <a class='struct' href='../../kafka/producer/struct.Builder.html' title='kafka::producer::Builder'>Builder</a>&lt;P&gt;</code></h3><div class='impl-items'><h4 id='method.with_partitioner' class='method'><code>fn <a href='#method.with_partitioner' class='fnname'>with_partitioner</a>&lt;Q: <a class='trait' href='../../kafka/producer/trait.Partitioner.html' title='kafka::producer::Partitioner'>Partitioner</a>&gt;(self, partitioner: Q) -&gt; <a class='struct' href='../../kafka/producer/struct.Builder.html' title='kafka::producer::Builder'>Builder</a>&lt;Q&gt;</code></h4>
+<div class='docblock'><p>Sets the partitioner to dispatch when sending messages without
+an explicit partition assignment.</p>
+</div><h4 id='method.create' class='method'><code>fn <a href='#method.create' class='fnname'>create</a>(self) -&gt; <a class='type' href='../../kafka/error/type.Result.html' title='kafka::error::Result'>Result</a>&lt;<a class='struct' href='../../kafka/producer/struct.Producer.html' title='kafka::producer::Producer'>Producer</a>&lt;P&gt;&gt;</code></h4>
+<div class='docblock'><p>Finally creates/builds a new producer based on the so far
+supplied settings.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

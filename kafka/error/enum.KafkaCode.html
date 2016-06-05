@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `KafkaCode` enum in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, KafkaCode">
+
+    <title>kafka::error::KafkaCode - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a>::<wbr><a href='index.html'>error</a></p><script>window.sidebarCurrent = {name: 'KafkaCode', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>kafka</a>::<wbr><a href='index.html'>error</a>::<wbr><a class='enum' href=''>KafkaCode</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-53' class='srclink' href='../../src/kafka/src/error.rs.html#55-158' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum KafkaCode {
+    Unknown,
+    OffsetOutOfRange,
+    CorruptMessage,
+    UnknownTopicOrPartition,
+    InvalidMessageSize,
+    LeaderNotAvailable,
+    NotLeaderForPartition,
+    RequestTimedOut,
+    BrokerNotAvailable,
+    ReplicaNotAvailable,
+    MessageSizeTooLarge,
+    StaleControllerEpochCode,
+    OffsetMetadataTooLargeCode,
+    OffsetsLoadInProgressCode,
+    ConsumerCoordinatorNotAvailableCode,
+    NotCoordinatorForConsumerCode,
+    InvalidTopicCode,
+    RecordListTooLargeCode,
+    NotEnoughReplicasCode,
+    NotEnoughReplicasAfterAppendCode,
+    InvalidRequiredAcksCode,
+    IllegalGenerationCode,
+    InconsistentGroupProtocolCode,
+    InvalidGroupIdCode,
+    UnknownMemberIdCode,
+    InvalidSessionTimeoutCode,
+    RebalanceInProgressCode,
+    InvalidCommitOffsetSizeCode,
+    TopicAuthorizationFailedCode,
+    GroupAuthorizationFailedCode,
+    ClusterAuthorizationFailedCode,
+}</pre><div class='docblock'><p>Various errors reported by a remote Kafka server.
+See also <a href="https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol#AGuideToTheKafkaProtocol-ErrorCodes">Kafka Errors</a></p>
+</div><h2 class='variants'>Variants</h2>
+<table class='variants_table'><tr><td id='variant.Unknown'><code>Unknown</code></td><td><div class='docblock'><p>An unexpected server error</p>
+</div></td><td></td></tr><tr><td id='variant.OffsetOutOfRange'><code>OffsetOutOfRange</code></td><td><div class='docblock'><p>The requested offset is outside the range of offsets
+maintained by the server for the given topic/partition</p>
+</div></td><td></td></tr><tr><td id='variant.CorruptMessage'><code>CorruptMessage</code></td><td><div class='docblock'><p>This indicates that a message contents does not match its CRC</p>
+</div></td><td></td></tr><tr><td id='variant.UnknownTopicOrPartition'><code>UnknownTopicOrPartition</code></td><td><div class='docblock'><p>This request is for a topic or partition that does not exist
+on this broker.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidMessageSize'><code>InvalidMessageSize</code></td><td><div class='docblock'><p>The message has a negative size</p>
+</div></td><td></td></tr><tr><td id='variant.LeaderNotAvailable'><code>LeaderNotAvailable</code></td><td><div class='docblock'><p>This error is thrown if we are in the middle of a leadership
+election and there is currently no leader for this partition
+and hence it is unavailable for writes.</p>
+</div></td><td></td></tr><tr><td id='variant.NotLeaderForPartition'><code>NotLeaderForPartition</code></td><td><div class='docblock'><p>This error is thrown if the client attempts to send messages
+to a replica that is not the leader for some partition. It
+indicates that the clients metadata is out of date.</p>
+</div></td><td></td></tr><tr><td id='variant.RequestTimedOut'><code>RequestTimedOut</code></td><td><div class='docblock'><p>This error is thrown if the request exceeds the user-specified
+time limit in the request.</p>
+</div></td><td></td></tr><tr><td id='variant.BrokerNotAvailable'><code>BrokerNotAvailable</code></td><td><div class='docblock'><p>This is not a client facing error and is used mostly by tools
+when a broker is not alive.</p>
+</div></td><td></td></tr><tr><td id='variant.ReplicaNotAvailable'><code>ReplicaNotAvailable</code></td><td><div class='docblock'><p>If replica is expected on a broker, but is not (this can be
+safely ignored).</p>
+</div></td><td></td></tr><tr><td id='variant.MessageSizeTooLarge'><code>MessageSizeTooLarge</code></td><td><div class='docblock'><p>The server has a configurable maximum message size to avoid
+unbounded memory allocation. This error is thrown if the
+client attempt to produce a message larger than this maximum.</p>
+</div></td><td></td></tr><tr><td id='variant.StaleControllerEpochCode'><code>StaleControllerEpochCode</code></td><td><div class='docblock'><p>Internal error code for broker-to-broker communication.</p>
+</div></td><td></td></tr><tr><td id='variant.OffsetMetadataTooLargeCode'><code>OffsetMetadataTooLargeCode</code></td><td><div class='docblock'><p>If you specify a string larger than configured maximum for
+offset metadata</p>
+</div></td><td></td></tr><tr><td id='variant.OffsetsLoadInProgressCode'><code>OffsetsLoadInProgressCode</code></td><td><div class='docblock'><p>The broker returns this error code for an offset fetch request
+if it is still loading offsets (after a leader change for that
+offsets topic partition), or in response to group membership
+requests (such as heartbeats) when group metadata is being
+loaded by the coordinator.</p>
+</div></td><td></td></tr><tr><td id='variant.ConsumerCoordinatorNotAvailableCode'><code>ConsumerCoordinatorNotAvailableCode</code></td><td><div class='docblock'><p>The broker returns this error code for group coordinator
+requests, offset commits, and most group management requests
+if the offsets topic has not yet been created, or if the group
+coordinator is not active.</p>
+</div></td><td></td></tr><tr><td id='variant.NotCoordinatorForConsumerCode'><code>NotCoordinatorForConsumerCode</code></td><td><div class='docblock'><p>The broker returns this error code if it receives an offset
+fetch or commit request for a group that it is not a
+coordinator for.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidTopicCode'><code>InvalidTopicCode</code></td><td><div class='docblock'><p>For a request which attempts to access an invalid topic
+(e.g. one which has an illegal name), or if an attempt is made
+to write to an internal topic (such as the consumer offsets
+topic).</p>
+</div></td><td></td></tr><tr><td id='variant.RecordListTooLargeCode'><code>RecordListTooLargeCode</code></td><td><div class='docblock'><p>If a message batch in a produce request exceeds the maximum
+configured segment size.</p>
+</div></td><td></td></tr><tr><td id='variant.NotEnoughReplicasCode'><code>NotEnoughReplicasCode</code></td><td><div class='docblock'><p>Returned from a produce request when the number of in-sync
+replicas is lower than the configured minimum and requiredAcks is
+-1.</p>
+</div></td><td></td></tr><tr><td id='variant.NotEnoughReplicasAfterAppendCode'><code>NotEnoughReplicasAfterAppendCode</code></td><td><div class='docblock'><p>Returned from a produce request when the message was written
+to the log, but with fewer in-sync replicas than required.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidRequiredAcksCode'><code>InvalidRequiredAcksCode</code></td><td><div class='docblock'><p>Returned from a produce request if the requested requiredAcks is
+invalid (anything other than -1, 1, or 0).</p>
+</div></td><td></td></tr><tr><td id='variant.IllegalGenerationCode'><code>IllegalGenerationCode</code></td><td><div class='docblock'><p>Returned from group membership requests (such as heartbeats) when
+the generation id provided in the request is not the current
+generation.</p>
+</div></td><td></td></tr><tr><td id='variant.InconsistentGroupProtocolCode'><code>InconsistentGroupProtocolCode</code></td><td><div class='docblock'><p>Returned in join group when the member provides a protocol type or
+set of protocols which is not compatible with the current group.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidGroupIdCode'><code>InvalidGroupIdCode</code></td><td><div class='docblock'><p>Returned in join group when the groupId is empty or null.</p>
+</div></td><td></td></tr><tr><td id='variant.UnknownMemberIdCode'><code>UnknownMemberIdCode</code></td><td><div class='docblock'><p>Returned from group requests (offset commits/fetches, heartbeats,
+etc) when the memberId is not in the current generation.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidSessionTimeoutCode'><code>InvalidSessionTimeoutCode</code></td><td><div class='docblock'><p>Return in join group when the requested session timeout is outside
+of the allowed range on the broker</p>
+</div></td><td></td></tr><tr><td id='variant.RebalanceInProgressCode'><code>RebalanceInProgressCode</code></td><td><div class='docblock'><p>Returned in heartbeat requests when the coordinator has begun
+rebalancing the group. This indicates to the client that it
+should rejoin the group.</p>
+</div></td><td></td></tr><tr><td id='variant.InvalidCommitOffsetSizeCode'><code>InvalidCommitOffsetSizeCode</code></td><td><div class='docblock'><p>This error indicates that an offset commit was rejected because of
+oversize metadata.</p>
+</div></td><td></td></tr><tr><td id='variant.TopicAuthorizationFailedCode'><code>TopicAuthorizationFailedCode</code></td><td><div class='docblock'><p>Returned by the broker when the client is not authorized to access
+the requested topic.</p>
+</div></td><td></td></tr><tr><td id='variant.GroupAuthorizationFailedCode'><code>GroupAuthorizationFailedCode</code></td><td><div class='docblock'><p>Returned by the broker when the client is not authorized to access
+a particular groupId.</p>
+</div></td><td></td></tr><tr><td id='variant.ClusterAuthorizationFailedCode'><code>ClusterAuthorizationFailedCode</code></td><td><div class='docblock'><p>Returned by the broker when the client is not authorized to use an
+inter-broker or administrative API.</p>
+</div></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../kafka/error/enum.KafkaCode.html' title='kafka::error::KafkaCode'>KafkaCode</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../kafka/error/enum.KafkaCode.html' title='kafka::error::KafkaCode'>KafkaCode</a></code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='enum' href='../../kafka/error/enum.KafkaCode.html' title='kafka::error::KafkaCode'>KafkaCode</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../kafka/error/enum.KafkaCode.html' title='kafka::error::KafkaCode'>KafkaCode</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

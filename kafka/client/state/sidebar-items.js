@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Broker","Describes a Kafka broker node `kafka-rust` is communicating with."],["TopicNames","An iterator over the topic names."]]});

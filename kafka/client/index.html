@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `client` mod in crate `kafka`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, client">
+
+    <title>kafka::client - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>kafka</a></p><script>window.sidebarCurrent = {name: 'client', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>kafka</a>::<wbr><a class='mod' href=''>client</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-166' class='srclink' href='../../src/kafka/src/client/mod.rs.html#1-1169' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Kafka Client - A mid-level abstraction for a kafka cluster
+allowing building higher level constructs.</p>
+
+<p>The entry point into this module is <code>KafkaClient</code> obtained by a
+call to <code>KafkaClient::new()</code>.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='fetch/index.html'
+                                  title='kafka::client::fetch'>fetch</a></td>
+                           <td class='docblock short'>
+                                <p>A representation of fetched messages from Kafka.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='metadata/index.html'
+                                  title='kafka::client::metadata'>metadata</a></td>
+                           <td class='docblock short'>
+                                <p>Types related to topic metadata for introspection by clients.
+Example: <code>KafkaClient::topics()</code>.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.CommitOffset.html'
+                                  title='kafka::client::CommitOffset'>CommitOffset</a></td>
+                           <td class='docblock short'>
+                                <p>Data point identifying a particular topic partition offset to be
+commited.
+See <code>KafkaClient::commit_offsets</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.FetchGroupOffset.html'
+                                  title='kafka::client::FetchGroupOffset'>FetchGroupOffset</a></td>
+                           <td class='docblock short'>
+                                <p>Data point identifying a topic partition to fetch a group&#39;s offset
+for.  See <code>KafkaClient::fetch_group_offsets</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.FetchPartition.html'
+                                  title='kafka::client::FetchPartition'>FetchPartition</a></td>
+                           <td class='docblock short'>
+                                <p>Partition related request data for fetching messages.
+See <code>KafkaClient::fetch_messages</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.KafkaClient.html'
+                                  title='kafka::client::KafkaClient'>KafkaClient</a></td>
+                           <td class='docblock short'>
+                                <p>Client struct keeping track of brokers and topic metadata.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.PartitionOffset.html'
+                                  title='kafka::client::PartitionOffset'>PartitionOffset</a></td>
+                           <td class='docblock short'>
+                                <p>A retrieved offset for a particular partition in the context of an
+already known topic.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.ProduceMessage.html'
+                                  title='kafka::client::ProduceMessage'>ProduceMessage</a></td>
+                           <td class='docblock short'>
+                                <p>Message data to be sent/produced to a particular topic partition.
+See <code>KafkaClient::produce_messages</code> and <code>Producer::send</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.SecurityConfig.html'
+                                  title='kafka::client::SecurityConfig'>SecurityConfig</a></td>
+                           <td class='docblock short'>
+                                <p>Security relevant configuration options for KafkaClient.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.TopicPartitionOffset.html'
+                                  title='kafka::client::TopicPartitionOffset'>TopicPartitionOffset</a></td>
+                           <td class='docblock short'>
+                                <p>A retrieved offset of a particular topic partition.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.Compression.html'
+                                  title='kafka::client::Compression'>Compression</a></td>
+                           <td class='docblock short'>
+                                <p>Compression types supported by kafka. The numeral values of this
+enumeration correspond to the compression encoding in the
+attributes of a Message in the protocol.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='enum' href='enum.FetchOffset.html'
+                                  title='kafka::client::FetchOffset'>FetchOffset</a></td>
+                           <td class='docblock short'>
+                                <p>Possible values when querying a topic&#39;s offset.
+See <code>KafkaClient::fetch_offsets</code>.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_COMPRESSION.html'
+                                  title='kafka::client::DEFAULT_COMPRESSION'>DEFAULT_COMPRESSION</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>KafkaClient::set_compression(..)</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_FETCH_CRC_VALIDATION.html'
+                                  title='kafka::client::DEFAULT_FETCH_CRC_VALIDATION'>DEFAULT_FETCH_CRC_VALIDATION</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>KafkaClient::set_fetch_crc_validation(..)</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_FETCH_MAX_BYTES_PER_PARTITION.html'
+                                  title='kafka::client::DEFAULT_FETCH_MAX_BYTES_PER_PARTITION'>DEFAULT_FETCH_MAX_BYTES_PER_PARTITION</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>KafkaClient::set_fetch_max_bytes(..)</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_FETCH_MAX_WAIT_TIME.html'
+                                  title='kafka::client::DEFAULT_FETCH_MAX_WAIT_TIME'>DEFAULT_FETCH_MAX_WAIT_TIME</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>KafkaClient::set_fetch_max_wait_time(..)</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.DEFAULT_FETCH_MIN_BYTES.html'
+                                  title='kafka::client::DEFAULT_FETCH_MIN_BYTES'>DEFAULT_FETCH_MIN_BYTES</a></td>
+                           <td class='docblock short'>
+                                <p>The default value for <code>KafkaClient::set_fetch_min_bytes(..)</code></p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "kafka";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
